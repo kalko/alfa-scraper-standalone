@@ -1,0 +1,10 @@
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "3111:3111"
+    volumes:
+      - .:/usr/src/app
+    environment:
+      NODE_ENV: development

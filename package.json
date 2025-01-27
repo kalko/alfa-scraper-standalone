@@ -1,0 +1,15 @@
+{
+  "name": "alfa-scraper-standalone",
+  "version": "0.1.0",
+  "description": "",
+  "main": "scraper.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/scraper.js"
+  },
+  "dependencies": {
+    "@siteimprove/alfa-scraper": "^0.76.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
