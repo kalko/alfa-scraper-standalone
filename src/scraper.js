@@ -46,6 +46,6 @@ app.post("/", async (req, res) => {
   res.json(scrapedData);
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
