@@ -8,8 +8,18 @@
     "start": "node src/server.js"
   },
   "dependencies": {
-    "@siteimprove/alfa-scraper": "^0.76.2",
+    "@siteimprove/alfa-act": "^0.98.0",
+    "@siteimprove/alfa-json": "^0.98.0",
+    "@siteimprove/alfa-rules": "^0.98.0",
+    "@siteimprove/alfa-scraper": "^0.77.0",
+    "@siteimprove/alfa-web": "^0.98.0",
     "cors": "^2.8.5",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "v": "^0.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "eslint": "^9.19.0",
+    "globals": "^15.14.0"
   }
 }

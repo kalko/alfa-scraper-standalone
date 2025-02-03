@@ -12,6 +12,9 @@ export const getScraper = async () => {
 export const scrapePage = async (url) => {
   try {
     const scraper = await getScraper()
+
+    console.log(`Scraping URL: ${url}`)
+
     const pageResult = await scraper.scrape(url)
     const page = await pageResult.getUnsafe("Could not scrape page")
     return page.toJSON()
