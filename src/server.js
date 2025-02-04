@@ -13,11 +13,22 @@ app.use(express.json())
 // Routes
 app.use("/", routes)
 
+// Error-handling middleware
+app.use((err, req, res, _next) => {
+  console.error(err.stack)
+  res.status(500).json({ error: "Something went wrong!" })
+})
+
 // Graceful shutdown
 process.on("SIGINT", async () => {
-  await cleanupScraper()
-  console.log("Shutting down gracefully.")
-  process.exit(0)
+  try {
+    await cleanupScraper()
+    console.log("Shutting down gracefully.")
+    process.exit(0)
+  } catch (error) {
+    console.error("Error during shutdown:", error)
+    process.exit(1)
+  }
 })
 
 app.listen(PORT, "0.0.0.0", () => {

@@ -8,7 +8,7 @@ export const validateUrl = (req, res, next) => {
   try {
     new URL(targetUrl)
     next() // Continue to next middleware/handler
-  } catch (error) {
+  } catch {
     res.status(400).json({ error: "Invalid or unsupported URL provided." })
   }
 }

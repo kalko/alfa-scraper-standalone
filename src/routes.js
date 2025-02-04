@@ -5,25 +5,27 @@ import { scrapePage } from "./scraper.js"
 
 const router = express.Router()
 
-router.post("/", validateUrl, async (req, res) => {
+router.post("/", validateUrl, async (req, res, next) => {
   try {
     const { targetUrl } = req.body
     const scrapedData = await scrapePage(targetUrl)
     res.json(scrapedData)
   } catch (error) {
-    console.error("Scraping failed:", error.message || error)
-    res.status(500).json({ error: "Failed to process the scraping request." })
+    next(error)
+    // console.error("Scraping failed:", error.message || error)
+    // res.status(500).json({ error: "Failed to process the scraping request." })
   }
 })
 
-router.post("/audit", validateUrl, async (req, res) => {
+router.post("/audit", validateUrl, async (req, res, next) => {
   try {
     const { targetUrl } = req.body
     const auditData = await evaluatePageWithAlfa(targetUrl)
     res.json(auditData)
   } catch (error) {
-    console.error("Scraping failed:", error.message || error)
-    res.status(500).json({ error: "Failed to process the scraping request." })
+    next(error)
+    // console.error("Scraping failed:", error.message || error)
+    // res.status(500).json({ error: "Failed to process the scraping request." })
   }
 })
 

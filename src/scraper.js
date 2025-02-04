@@ -20,7 +20,7 @@ export const scrapePage = async (url) => {
     return page.toJSON()
   } catch (error) {
     console.error("Scraping error:", error)
-    throw new Error("Failed to scrape the page.")
+    throw new Error(`Failed to scrape the page at ${url}: ${error.message}`)
   }
 }
 
