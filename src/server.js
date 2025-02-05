@@ -1,10 +1,13 @@
 import cors from "cors"
+import dotenv from "dotenv"
 import express from "express"
 import routes from "./routes.js"
 import { cleanupScraper } from "./scraper.js"
 
 const app = express()
 const PORT = process.env.PORT || 3111
+
+dotenv.config()
 
 // Middleware
 app.use(cors())
