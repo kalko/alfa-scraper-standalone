@@ -8,7 +8,7 @@ export const evaluatePageWithAlfa = async (targetUrl) => {
   try {
     const scrapedData = await scrapePage(targetUrl)
     const alfaPage = Page.from(scrapedData).getUnsafe(
-      "Could not parse the page"
+      "Could not parse the page",
     )
 
     return runAlfaAudit(alfaPage, targetUrl)
@@ -27,7 +27,7 @@ export const runAlfaAudit = async (alfaPage, targetUrl) => {
   } catch (error) {
     console.error("Error during Alfa Audit evaluation:", error)
     throw new Error(
-      `Failed to evaluate the page at ${targetUrl}: ${error.message}`
+      `Failed to evaluate the page at ${targetUrl}: ${error.message}`,
     )
   }
 }
@@ -47,8 +47,9 @@ const prepareAuditScan = (url, outcomes) => {
       auditScan.failures = failureCount
       auditScan.failedItems.push(
         outcome.toJSON({
-          verbosity: json.Serializable.Verbosity.High,
-        })
+          verbosity: json.Serializable.Verbosity.Low,
+          // verbosity: json.Serializable.Verbosity.High,
+        }),
       )
     }
   })
